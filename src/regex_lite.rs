@@ -129,14 +129,15 @@ impl SedRegex {
         }
         let node = &seq[ni];
         // Collect all valid match end positions for repeated atom (greedy: try longest first)
-        let mut ends: Vec<(usize, Vec<Option<(usize, usize)>>)> = Vec::new();
+        type CaptureGroups = Vec<Option<(usize, usize)>>;
+        let mut ends: Vec<(usize, CaptureGroups)> = Vec::new();
         let mut cur_pos = pos;
         let mut cur_groups = groups.clone();
         if node.min == 0 {
             ends.push((cur_pos, cur_groups.clone()));
         }
         let mut count = 0;
-        while node.max.map_or(true, |m| count < m) {
+        while node.max.is_none_or(|m| count < m) {
             let mut next_g = cur_groups.clone();
             if let Some(next_pos) = self.match_atom(&node.atom, chars, cur_pos, &mut next_g) {
                 count += 1;
@@ -269,7 +270,7 @@ pub fn expand_replacement(template: &str, text_chars: &[char], m: &Match) -> Str
                 i += 2;
                 continue;
             }
-            if ('0'..='9').contains(&next) {
+            if next.is_ascii_digit() {
                 out.push_str(&slice_group((next as usize) - ('0' as usize)));
                 i += 2;
                 continue;

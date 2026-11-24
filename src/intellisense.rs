@@ -473,7 +473,7 @@ pub fn get_completions(input: &str, cursor: usize, ctx: &ContextInfo) -> Intelli
     if let Some(brace_idx) = find_open_brace(before) {
         if brace_idx >= cmd_start {
             let inside = &before[brace_idx + 1..];
-            let last_space = inside.rfind(|c| c == ' ' || c == '\t');
+            let last_space = inside.rfind([' ', '\t']);
             let token_start = match last_space {
                 Some(idx) => brace_idx + 1 + idx + 1,
                 None => brace_idx + 1,
