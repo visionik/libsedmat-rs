@@ -4,6 +4,7 @@
 
 pub mod brace;
 pub mod error;
+pub mod intellisense;
 pub mod memory;
 pub mod parser;
 pub mod planner;
@@ -15,6 +16,11 @@ pub use brace::{
     parse_brace_expression, parse_brace_replacement, resolve_color,
 };
 pub use error::{Result, SedmatError};
+pub use intellisense::{
+    extract_diagnostic, get_completions, tokenize, ContextInfo, Diagnostic, FlagDefinition,
+    IntelliSenseExtensions, IntelliSenseResult, Profile, SignaturePart, SnippetOption, Suggestion,
+    SuggestionKind, Token, TokenKind, ValueOption,
+};
 pub use memory::{Executor, MemoryDocument};
 pub use parser::{enrich, parse, parse_address, parse_container_scope, parse_expression, parse_program};
 pub use planner::{
