@@ -1,0 +1,11 @@
+[package]
+name = "libsedmat"
+version = "0.1.0"
+edition = "2021"
+license = "MIT"
+description = "Zero-dependency Rust library for SEDMAT (v3.6/v3.7) rich document annotation and transformation"
+repository = "https://github.com/visionik/libsedmat-rs"
+keywords = ["sedmat", "sed", "document", "formatting", "dsl"]
+categories = ["text-processing", "parsing"]
+
+[dependencies]
