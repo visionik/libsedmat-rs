@@ -100,6 +100,23 @@ Implement the `libsedmat::Backend` trait (`project`, `apply_text_plan`, `apply_a
 - Honor `BraceExpression.no_reset` (`{!0}`) for additive formatting vs. implicit reset default.
 - Conformance suite: `testdata/conformance/v3.6.json` (shared across Go, TS, Rust, Python, and C++).
 
+## Examples
+
+All examples have **zero external dependencies** (Rust `std` only):
+
+- **[`examples/lsp_server.rs`](./examples/lsp_server.rs)** — SEDMAT Language Server (LSP over stdio) with live diagnostics, profile-aware completions + color swatches, and semantic tokens:
+  ```bash
+  cargo run --example lsp_server
+  ```
+- **[`examples/doc_playground.rs`](./examples/doc_playground.rs)** — Launch-a-web Document Playground (`http://127.0.0.1:4173`) with live syntax highlighting, IntelliSense dropdown, color swatches, ghost text, dry-run preview, and numbered document view:
+  ```bash
+  cargo run --example doc_playground
+  ```
+- **[`examples/slide_deck.rs`](./examples/slide_deck.rs)** — Launch-a-web Slide Deck Studio (`http://127.0.0.1:4174`) demonstrating SEDMAT v3.7 `@` container scopes and Slides profile completions:
+  ```bash
+  cargo run --example slide_deck
+  ```
+
 ## Development
 
 ```bash
